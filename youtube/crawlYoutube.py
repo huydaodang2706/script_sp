@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser(description="crawlYoutube command flags")
 parser.add_argument("--playlist", "-p", nargs="+", type=str, help="Playlist to crawl")
 parser.add_argument("--save_dir", "-s", type=str,
                     help="Directory to save crawled files")
-parser.add_argument("--sublang", type=str, help="Subtitle language", default="vn")
+parser.add_argument("--sublang", type=str, help="Subtitle language", default="vi")
 
 args = parser.parse_args()
 
@@ -20,7 +20,7 @@ def my_hook(d):
     if d['status'] == 'finished':
         print('Done downloading, now converting ...')
 
-
+# (currently supported: srt|ass|vtt|lrc)
 ydl_opt = {
     "format": "bestaudio/best",
     "postprocessors": [{
@@ -31,7 +31,7 @@ ydl_opt = {
     "progress_hooks": [my_hook],
     "writesubtitles": True,
     "writeautomaticsub": True,
-    "subtitlesformat": "txt",
+    "subtitlesformat": "vtt",
     "subtitleslangs": [args.sublang],
     "outtmpl": os.path.join(args.save_dir, "%(title)s.%(ext)s")
 }

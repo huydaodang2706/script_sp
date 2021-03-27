@@ -232,3 +232,5 @@ tags
 .vim
 
 # End of https://www.gitignore.io/api/vim,python
+youtube/result
+youtube_test/result
